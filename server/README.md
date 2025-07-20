@@ -77,7 +77,7 @@ PORT=8080
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/rahulkrchaudhary/QuickBite.git
-cd QuickBite
+cd QuickBite/server
 ```
 
 ### 3. Configure Environment Variables
