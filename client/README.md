@@ -85,7 +85,7 @@ QuickBite is your ultimate food-ordering platform, connecting you with the best 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/rahulkrchaudhary/QuickBite.git
-   cd QuickBite
+   cd QuickBite/client
    ```
 
 2. **Install dependencies**
