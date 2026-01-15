@@ -30,11 +30,12 @@ public class AppConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.sessionManagement(managment -> managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(Authorize-> Authorize
-                                .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
-                                .requestMatchers("/api/stripe/webhook").permitAll()
-                                .requestMatchers("/api/restaurants").permitAll()
-                                .requestMatchers("/api/events/home").permitAll()
-                                .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
+                        .requestMatchers("/api/stripe/webhook").permitAll()
+                        .requestMatchers("/api/restaurants").permitAll()
+                        .requestMatchers("/api/health").permitAll()
+                        .requestMatchers("/api/events/home").permitAll()
+                        .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)

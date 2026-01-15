@@ -10,6 +10,16 @@ import Footer from '../Footer/Footer'
 import { EventCard } from '../Profile/EventCard'
 // import { GET_ALL_EVENTS_REQUEST } from '../State/Restaurant/ActionType'
 
+const bannerImages = [
+  "https://shef.com/homemade-food/wp-content/uploads/tabletop-spread-of-authentic-indian-food.jpg",
+  "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80"
+];
+
+
 // const restaurants=[1,1,1,1,1,1,1,1]
 export const Home = () => {
     const dispatch=useDispatch()
@@ -22,9 +32,29 @@ export const Home = () => {
         dispatch(getAllRestaurantAction())
         dispatch(getAllEventsHome())        
     },[])
+
+
+    const [currentImage, setCurrentImage] = React.useState(0);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage(prev => (prev + 1) % bannerImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+    
+
   return (
     <div className=''>
-        <section className='banner -z-50 relative flex flex-col justify-center items-center'>
+        <section
+                className="banner -z-50 relative flex flex-col justify-center items-center"
+                style={{
+                    backgroundImage: `url(${bannerImages[currentImage]})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    transition: "background-image 1s ease-in-out"
+                }}
+            >
             <div className='w-[50vw] z-10 text-center'>
                 {/* <div className="flex items-center justify-center space-x-2 text-center"> 
                     <div onClick={() => navigate("/")}>
@@ -60,10 +90,10 @@ export const Home = () => {
 
         </section>
 
-        <section className='p-10 lg:py-10 lg:px-20 '>
+        {/* <section className='p-10 lg:py-10 lg:px-20 '>
             <p className='text-2xl font-semibold text-grey-400 py-5 text-center'>Top Meals</p>
             <MultiItemCarousel/>
-        </section>
+        </section> */}
         { restaurant.restaurants.length >0 && (
         <section className='px-5 lg:px-20 pt-5'>
             <h1 className='text-2xl font-semibold text-grey-400 pb-5 text-center mb-5'>Best Restaurant</h1>
