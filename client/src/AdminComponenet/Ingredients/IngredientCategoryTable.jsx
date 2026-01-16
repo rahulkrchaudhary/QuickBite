@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardHeader, IconButton } from '@mui/material'
+import { Box, Card, CardHeader, IconButton } from '@mui/material'
 import React, { useEffect } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,10 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CreateIcon from '@mui/icons-material/Create';
-import { Delete } from '@mui/icons-material';
-// import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { CreateIngredientCategoryForm } from './CreateIngredientCategoryForm';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +25,6 @@ const style = {
     boxShadow: 24,
     p: 4,
   };
-const orders=[1,1,1,1]
 
 export const IngredientCategoryTable = () => {
 
@@ -46,7 +41,7 @@ export const IngredientCategoryTable = () => {
             id:restaurant.usersRestaurant?.id, 
             jwt
         }))
-    }, [])
+    }, [dispatch, jwt, restaurant.usersRestaurant?.id])
 
     return (
     <Box>

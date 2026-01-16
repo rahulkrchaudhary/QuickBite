@@ -1,15 +1,12 @@
-import { Flare, RemoveCircleOutline } from '@mui/icons-material'
 import { Chip, IconButton } from '@mui/material'
 import React from 'react'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { removeCartItem, updateCartItem } from '../State/Cart/Action';
 
 export const CratItem = ({item}) => {
-    const {auth, cart}=useSelector(store=>store)
-    const navigate=useNavigate()
+    const {auth}=useSelector(store=>store)
     const dispatch=useDispatch()
     const jwt=localStorage.getItem("jwt")
 

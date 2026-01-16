@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRestaurantsOrder, updateOrderStatus } from '../../component/State/Restaurant Order/Action';
-import { useParams } from 'react-router-dom';
 
 const orderStatus=[
     {label: "Pending", value: "PENDING"},
@@ -21,11 +20,11 @@ const orderStatus=[
 export const OrderTable = ({isDashBoard, name}) => {
 
   const dispatch=useDispatch()
-  const {restaurant, restaurantOrder, ingredients, menu}=useSelector(store=>store)
+  const {restaurant, restaurantOrder}=useSelector(store=>store)
   const jwt=localStorage.getItem("jwt")
 
   const [anchorElArray, setAnchorElArray] = useState([]);
-  const { id } = useParams();
+//   const { id } = useParams();
 
   const handleUpdateStatusMenuClick = (event, index) => {
     const newAnchorElArray = [...anchorElArray];
@@ -49,7 +48,7 @@ export const OrderTable = ({isDashBoard, name}) => {
         jwt,
         restaurantId: restaurant.usersRestaurant?.id
     }))
-  }, [])
+  }, [dispatch, jwt, restaurant.usersRestaurant?.id])
   
   return (
      <Box>

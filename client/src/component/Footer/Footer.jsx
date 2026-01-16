@@ -1,11 +1,7 @@
-
 import React from 'react'
-import { Box, Typography, Grid, Link, IconButton, Divider } from "@mui/material";
-import { GitHub, Web, LibraryBooks, Instagram, LinkedIn, Facebook, Twitter, Mail } from "@mui/icons-material";
-// import Link from "next/link"
-// import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Link } from "@mui/material";
+import { GitHub, LinkedIn, Twitter, Mail } from "@mui/icons-material";
 
-// export 
 const Footer =() =>{
   return (
     <>

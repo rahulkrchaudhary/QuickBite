@@ -3,26 +3,25 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser, logout } from '../State/Authentication/Action';
+import { logout } from '../State/Authentication/Action';
 
 export const UserProfile = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
   const {auth}=useSelector(store=>store)
-  const jwt=localStorage.getItem("jwt")
   
   const handleLogout=()=>{
     dispatch(logout())
     navigate("/")
   }
-  const handledelete=()=>{
-    // dispatch(logout())
-    dispatch(deleteUser({
-      userId: auth.user?.id,
-      jwt: jwt || auth.jwt
-    }))
-    navigate("/")
-  }
+  // const handledelete=()=>{
+  //   // dispatch(logout())
+  //   dispatch(deleteUser({
+  //     userId: auth.user?.id,
+  //     jwt: jwt || auth.jwt
+  //   }))
+  //   navigate("/")
+  // }
 
   return (
     <div className='min-h-[80vh] flex flex-col justify-center items-center text-center'>

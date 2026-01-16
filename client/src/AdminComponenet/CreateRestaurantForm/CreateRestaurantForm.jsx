@@ -1,10 +1,9 @@
-import { AddPhotoAlternate } from '@mui/icons-material'
 import { Button, CircularProgress, Grid, IconButton, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CloseIcon from '@mui/icons-material/Close';
-import { data, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { uploadImageToCloudinary } from '../util/UploadToCloudinary';
 import { useDispatch } from 'react-redux';
 import { createRestaurant } from '../../component/State/Restaurant/Action';
@@ -79,8 +78,7 @@ export const CreateRestaurantForm = () => {
     formik.setFieldValue('images', uploadedImages);
   }
   const handleLogOut=()=>{
-    dispatch(logout()).
-    then(() => {
+    dispatch(logout()).then(() => {
       navigate("/");  // Navigate after successful deletion
     }).catch((err) => {
       console.error("Error deleting restaurant:", err);

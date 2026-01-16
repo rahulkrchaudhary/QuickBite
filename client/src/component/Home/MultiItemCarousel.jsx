@@ -2,11 +2,9 @@ import React, { useEffect } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import { TopMeals } from '../Data/TopMeals'; // Use your existing data import
 import { CarouselItem } from './CarouselItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMenu, searchMenuItem } from '../State/Menu/Action';
-import { useNavigate } from 'react-router-dom';
+import { getAllMenu } from '../State/Menu/Action';
 
 const responsive = [
   {
@@ -52,7 +50,7 @@ export const MultiItemCarousel = () => {
   const dispatch = useDispatch();
   useEffect(() =>{
     dispatch(getAllMenu())
-  }, [])
+  }, [dispatch]);
 
   const {menu} = useSelector(store=>store);
   console.log("menu in carousel--->", menu);

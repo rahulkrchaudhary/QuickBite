@@ -1,7 +1,7 @@
 import { FormControl, Radio, RadioGroup, Typography, Card, FormControlLabel } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { OrderTable } from './OrderTable'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRestaurantsOrder } from '../../component/State/Restaurant Order/Action'
 
@@ -15,7 +15,7 @@ export const Orders = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  // const { id } = useParams();
   const jwt = localStorage.getItem("jwt");
   const { restaurant, auth } = useSelector((store) => store);
 
@@ -31,7 +31,7 @@ export const Orders = () => {
         jwt: auth.jwt || jwt,
       })
     );
-  }, [auth.jwt, filterValue]);
+  }, [auth.jwt, filterValue, dispatch, jwt, restaurant.usersRestaurant?.id]);
 
   const handleFilter = (e, value) => {
     const searchParams = new URLSearchParams(location.search);

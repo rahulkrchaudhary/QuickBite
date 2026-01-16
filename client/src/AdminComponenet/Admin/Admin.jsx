@@ -12,14 +12,13 @@ import { CreateMenuForm } from '../Menu/CreateMenuForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRestaurantsCategory } from '../../component/State/Restaurant/Action'
 import { fetchRestaurantsOrder } from '../../component/State/Restaurant Order/Action'
-import { Navbar } from '../Navbar/Navbar'
 import { getIngredientCategory, getIngredientsOfRestaurant } from '../../component/State/Ingredients/Action'
 // import { Navbar } from '../../component/Navbar/Navbar'
 
 export const Admin = () => {
 
     const [openSideBar, setOpenSideBar] = useState(false);
-  const handleOpenSideBar = () => setOpenSideBar(true);
+//   const handleOpenSideBar = () => setOpenSideBar(true);
   const handleCloseSideBar = () => setOpenSideBar(false);
     const dispatch=useDispatch()
     const jwt=localStorage.getItem("jwt")
@@ -46,7 +45,7 @@ export const Admin = () => {
             id:restaurant.usersRestaurant?.id,
             jwt
         }))
-    }, [])
+    }, [dispatch, jwt, restaurant.usersRestaurant?.id])
 
   return (
     <div>

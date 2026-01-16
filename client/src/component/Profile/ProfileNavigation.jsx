@@ -7,9 +7,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Divider, Drawer, useMediaQuery } from '@mui/material';
-import zIndex from '@mui/material/styles/zIndex';
 import { useNavigate } from 'react-router-dom';
-import { Routes, Route } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout } from '../State/Authentication/Action';
 
@@ -31,7 +29,7 @@ export const ProfileNavigation = ({open, handleClose}) => {
     
     const handleNavigate=(item)=>{
         // navigate('/my-profile/${item.title.toLowerCase()}')
-        if(item.title=="Logout"){
+        if(item.title==="Logout"){
             dispatch(logout())
             navigate("/")
         }

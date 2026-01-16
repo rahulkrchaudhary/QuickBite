@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { PopularCuisines } from "./PopularCuisines";
 import SearchDishCard from "./SearchDishCard";
 import { useDispatch, useSelector } from "react-redux";
-import { TopMeals } from "../Data/TopMeals";
 import { getAllMenu, searchMenuItem } from "../State/Menu/Action";
 import { searchRestaurant } from "../State/Restaurant/Action";
-import { Button } from "@mui/material";
 import { SearchRestaurantCard } from "./SearchRestaurantCard";
-import { RestaurantCard } from "../Restaurant/RestaurantCard";
 
 const Search = () => {
 
@@ -32,7 +28,7 @@ const Search = () => {
         console.log("use effect called")
         dispatch(getAllMenu())
         console.log(menu)
-    }, [])
+    }, [dispatch, menu, restaurant]);
 
   return (
     <div className="px-5 lg:px-[18vw]">

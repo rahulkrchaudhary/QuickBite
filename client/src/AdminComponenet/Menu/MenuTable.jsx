@@ -1,4 +1,4 @@
-import { Avatar, Backdrop, Box, Button, Card, CardActions, CardHeader, Chip, CircularProgress, IconButton } from '@mui/material'
+import { Avatar, Backdrop, Box, Button, Card, CardHeader, Chip, CircularProgress, IconButton } from '@mui/material'
 import React, { useEffect } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CreateIcon from '@mui/icons-material/Create';
 import { Delete } from '@mui/icons-material';
-import { CreateMenuForm } from './CreateMenuForm';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFoodAction, getMenuItemsByRestaurantId, updateMenuItemsAvailability } from '../../component/State/Menu/Action';
@@ -20,7 +19,7 @@ export const MenuTable = () => {
   const dispatch=useDispatch()
   const jwt=localStorage.getItem("jwt")
 
-  const {auth, restaurant, ingredients, menu}=useSelector(store=>store)
+  const {auth, restaurant, menu}=useSelector(store=>store)
 
   useEffect(()=>{
     dispatch(getMenuItemsByRestaurantId({
@@ -31,7 +30,7 @@ export const MenuTable = () => {
         nonveg: false,
         foodCategory: ""
     }))
-  }, [])
+  }, [dispatch, jwt, restaurant.usersRestaurant?.id])
 
     const handelFoodAvialability=(foodId)=>{
         dispatch(updateMenuItemsAvailability({

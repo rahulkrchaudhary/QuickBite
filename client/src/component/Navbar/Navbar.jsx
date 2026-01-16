@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, IconButton } from '@mui/material'
+import { Avatar, Badge, IconButton } from '@mui/material'
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { pink } from '@mui/material/colors';
@@ -8,7 +8,6 @@ import { Person } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logo from "../../quickbiteLogo.png"
-import FastfoodIcon from '@mui/icons-material/Fastfood'; // You can replace this with any icon
 
 
 export const Navbar = () => {
@@ -30,7 +29,7 @@ export const Navbar = () => {
                 {/* Icon before "QuickBite" */}
                 <div onClick={() => navigate("/")}>
                     {/* <img src={"quickbiteLogo.png"} alt="Image" width={30} height={30} /> */}
-                    <img src={logo} alt="Image" width={30} height={30} />
+                    <img src={logo} alt="Logo" width={30} height={30} />
 
                 </div>
                 <li onClick={() => navigate("/")} className='logo font-semibold text-gray-300 text-3xl'>

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card, CardActions, CardContent, CardMedia, IconButton, Typography} from '@mui/material'
+import { Card, CardContent, CardMedia, Typography} from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 export const EventCard = ({item}) => {
   return (

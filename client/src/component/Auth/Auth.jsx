@@ -1,6 +1,6 @@
-import { Alert, Box, Button, Modal, Snackbar, styled } from '@mui/material'
+import { Alert, Box, Button, Modal, Snackbar } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { style } from '../Cart/Cart';
 import { RegisterForm } from './RegisterForm';
 import { LoginForm } from './LoginForm';
@@ -20,7 +20,7 @@ export const Auth = () => {
         if(auth.success || auth.error){ 
             setOpenSnackBar(true)
         }
-    },[])
+    },[auth.success, auth.error])
     // auth.success, auth.error
     const handleCloseSnackBar=()=>{
         setOpenSnackBar(false)

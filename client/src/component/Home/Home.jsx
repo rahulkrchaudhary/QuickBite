@@ -2,10 +2,8 @@ import React, { useEffect } from 'react'
 import './Home.css'
 import { MultiItemCarousel } from './MultiItemCarousel'
 import { RestaurantCard } from '../Restaurant/RestaurantCard'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {getAllEventsHome, getAllRestaurantAction } from '../State/Restaurant/Action'
-import { useNavigate } from 'react-router-dom'
-import { findCart } from '../State/Cart/Action'
 import Footer from '../Footer/Footer'
 import { EventCard } from '../Profile/EventCard'
 // import { GET_ALL_EVENTS_REQUEST } from '../State/Restaurant/ActionType'
@@ -23,19 +21,15 @@ const bannerImages = [
   "https://krdo.b-cdn.net/2023/08/Black-Simple-Modern-Indian-Recipe-Book-Cover.png"
  ];
 
-
-// const restaurants=[1,1,1,1,1,1,1,1]
 export const Home = () => {
     const dispatch=useDispatch()
-    const navigate=useNavigate()
-    const jwt=localStorage.getItem("jwt")
-    const {restaurant, auth}=useSelector(store=>store)
+    const {restaurant}=useSelector(store=>store)
     // console.log("restaursnt --->", restaurant)
     useEffect(()=>{
         // dispatch(getAllRestaurantAction(auth.jwt || jwt))
         dispatch(getAllRestaurantAction())
         dispatch(getAllEventsHome())        
-    },[])
+    },[dispatch])
 
 
     const [currentImage, setCurrentImage] = React.useState(0);

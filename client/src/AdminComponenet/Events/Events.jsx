@@ -1,12 +1,9 @@
-import { Button, Grid, TextField } from '@mui/material'
+import { Button } from '@mui/material'
 import React, { useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
-import { createEvent, getRestaurantEvents } from '../../component/State/Restaurant/Action';
+import { getRestaurantEvents } from '../../component/State/Restaurant/Action';
 import { CreateEvent } from './CreateEvent';
 import { EventCard } from './EventCard';
 
@@ -37,7 +34,7 @@ export const Events = () => {
       restaurantId: restaurant.usersRestaurant?.id,
       jwt: jwt
     }))
-  }, [])
+  }, [dispatch, jwt, restaurant.usersRestaurant?.id])
 
   console.log("event wala restaurant", restaurant)
   return (

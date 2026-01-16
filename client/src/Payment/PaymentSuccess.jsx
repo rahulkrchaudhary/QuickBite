@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import { green } from '@mui/material/colors';
-import { Margin } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -18,7 +17,7 @@ export const PaymentSuccess = () => {
     // })
     useEffect(()=>{
       dispatch(clearCartAction())
-    }, [])
+    }, [dispatch])
   return (
     <div className='min-h-screen px-5'>
         <div className='flex flex-col items-center justify-center h-[90vh]'>

@@ -1,13 +1,11 @@
-import { Button, TextField, Typography } from '@mui/material'
+import { Button, Select, TextField, Typography } from '@mui/material'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom'
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../State/Authentication/Action';
 

@@ -1,7 +1,5 @@
-import { Grid } from '@mui/material'
 import React from 'react'
 import { MenuTable } from '../Menu/MenuTable'
-import { OrderTable } from '../Orders/OrderTable'
 
 export const Dashboard = () => {
   return (

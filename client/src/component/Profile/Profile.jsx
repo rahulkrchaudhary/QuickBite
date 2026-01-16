@@ -6,12 +6,12 @@ import { Orders } from './Orders';
 import { Address } from './Address';
 import { Favorites } from './Favorites';
 import { Events } from './Events';
-import { PaymentSuccess } from '../../Payment/PaymentSuccess';
 import { Payment } from './Payment';
 
 
 export const Profile = () => {
-    const [openSideBar, setOpenSideBar]=useState(false);
+    // const [openSideBar, setOpenSideBar]=useState(false);
+    const [openSideBar] = useState(false);
   return (
     <div className='lg:flex justify-between'>
         <div className='sticky h-[80vh] lg:w-[20%]'>

@@ -1,8 +1,7 @@
-import { Alert, Button, Container, CssBaseline, TextField, Typography } from '@mui/material'
+import { Button, Container, CssBaseline, TextField, Typography } from '@mui/material'
 import React from 'react'
 import * as Yup from "yup";
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { resetPasswordRequest } from '../State/Authentication/Action'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 
@@ -17,9 +16,7 @@ const validationSchema = Yup.object({
 });
 
 export const ResetPasswordRequest = () => {
-    const navigate= useNavigate()
     const dispatch=useDispatch()
-    const {auth}= useSelector(store=>store)
 
     const handleSubmit=(values)=>{
         if (!values.email.includes("@")) {

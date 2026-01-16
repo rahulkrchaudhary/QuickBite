@@ -1,26 +1,21 @@
-import { Button, Card, CardContent, CardHeader, IconButton } from "@mui/material";
+import { Card, CardContent, CardHeader, IconButton } from "@mui/material";
 import React from "react";
-import StarIcon from "@mui/icons-material/Star";
 import EastIcon from "@mui/icons-material/East";
-import { useDispatch, useSelector } from "react-redux";
-// import { addItemToCart } from "../../../State/Customers/Cart/cart.action";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addItemToCart } from "../State/Cart/Action";
 
 const SearchDishCard = ({item}) => {
 
-    const dispatch = useDispatch();
-    const {auth}=useSelector(store=>store)
-    const handleAddItemToCart = () => {
-    const data = {
-      token: localStorage.getItem("jwt"),
-      cartItem: {
-        menuItemId: item.id,
-        quantity: 1,
-      },
-    };
-    dispatch(addItemToCart(data));
-  };
+  //   const handleAddItemToCart = () => {
+  //   const data = {
+  //     token: localStorage.getItem("jwt"),
+  //     cartItem: {
+  //       menuItemId: item.id,
+  //       quantity: 1,
+  //     },
+  //   };
+  //   dispatch(addItemToCart(data));
+  // };
   const navigate=useNavigate()
   
   return (

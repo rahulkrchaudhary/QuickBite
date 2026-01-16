@@ -1,12 +1,11 @@
-import { Alert, Button, IconButton, Snackbar, TextField } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Button, TextField } from '@mui/material'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCategoryAction } from '../../component/State/Restaurant/Action'
-import CloseIcon from '@mui/icons-material/Close';
 
 
 export const CreateFoodCategoryForm = () => {
-    const {restaurant, auth}=useSelector((store)=>store)
+    const {restaurant}=useSelector((store)=>store)
     const dispatch=useDispatch()
 
     const [formData, setFormData] = useState({

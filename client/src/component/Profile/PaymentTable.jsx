@@ -11,7 +11,7 @@ export const PaymentTable = () => {
       console.log("payment", payment)
   useEffect(()=>{
     dispatch(getUserPayment(jwt))
-  }, [])
+  }, [dispatch, jwt])
   // console.log("----", payment.payment)
 
   // const paymentData = Array(4).fill({ id: 1, orderId: 1, date: "25-12-25", amount: "₹ 255", status: "Pending" });

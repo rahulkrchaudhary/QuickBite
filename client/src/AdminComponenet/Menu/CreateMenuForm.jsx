@@ -1,13 +1,9 @@
-import { AddPhotoAlternate, Category, Restaurant } from '@mui/icons-material'
 import { Alert, Button, CircularProgress, Grid, IconButton, Snackbar, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import React, { useEffect, useState } from 'react'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CloseIcon from '@mui/icons-material/Close';
-// import { data } from 'react-router-dom';
 import { uploadImageToCloudinary } from '../util/UploadToCloudinary';
-// import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -18,28 +14,28 @@ import Chip from '@mui/material/Chip';
 import { useDispatch, useSelector } from 'react-redux';
 import { createMenuItem } from '../../component/State/Menu/Action';
 import { getIngredientsOfRestaurant } from '../../component/State/Ingredients/Action';
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
 
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  description: Yup.string().required("Description is required"),
-  price: Yup.number()
-    .typeError("Price must be a number")
-    .required("Price is required")
-    .min(0, "Price must be greater than or equal to 0"),
+// const validationSchema = Yup.object({
+//   name: Yup.string().required("Name is required"),
+//   description: Yup.string().required("Description is required"),
+//   price: Yup.number()
+//     .typeError("Price must be a number")
+//     .required("Price is required")
+//     .min(0, "Price must be greater than or equal to 0"),
 
-  images: Yup.string()
-    .url("Invalid URL format")
-    .required("Image URL is required"),
-  vegetarian: Yup.boolean().required("Is Vegetarian is required"),
-  seasonal: Yup.boolean().required("Is Gluten Free is required"),
-  quantity: Yup.number()
-    .typeError("Quantity must be a number")
-    .required("Quantity is required")
-    .min(0, "Quantity must be greater than or equal to 0"),
-});
+//   images: Yup.string()
+//     .url("Invalid URL format")
+//     .required("Image URL is required"),
+//   vegetarian: Yup.boolean().required("Is Vegetarian is required"),
+//   seasonal: Yup.boolean().required("Is Gluten Free is required"),
+//   quantity: Yup.number()
+//     .typeError("Quantity must be a number")
+//     .required("Quantity is required")
+//     .min(0, "Quantity must be greater than or equal to 0"),
+// });
 
 
 const initialValues={
@@ -53,6 +49,7 @@ const initialValues={
   ingredients:[],
   images:[]
 }
+
 
 export const CreateMenuForm = () => {
 
@@ -92,16 +89,16 @@ export const CreateMenuForm = () => {
       formik.setFieldValue('images', uploadedImages);
     }
 
-    const handleRemove = (id) => {
-      formik.setFieldValue(
-          "ingredients",
-          formik.values.ingredients.filter((itemId) => itemId !== id) // Remove selected ID
-      );
-  };
+    // const handleRemove = (id) => {
+    //   formik.setFieldValue(
+    //       "ingredients",
+    //       formik.values.ingredients.filter((itemId) => itemId !== id) // Remove selected ID
+    //   );
+    // };
 
     useEffect(()=>{
       dispatch(getIngredientsOfRestaurant({jwt, id:restaurant.usersRestaurant.id}))
-    }, [])
+    }, [dispatch, jwt, restaurant.usersRestaurant?.id])
 
     const [openSnackBar, setOpenSnackBar] = useState(false);
 

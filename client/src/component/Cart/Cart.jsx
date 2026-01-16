@@ -4,9 +4,8 @@ import { CratItem } from './CratItem'
 import { AddressCard } from './AddressCard'
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import Box from '@mui/material/Box';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Store } from '@mui/icons-material';
 import { createOrder } from '../State/Order/Action';
 import { clearCartAction, findCart } from '../State/Cart/Action';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
@@ -59,7 +58,7 @@ export const Cart = () => {
 
     useEffect(()=>{
         dispatch(findCart(jwt))
-    }, [])
+    }, [dispatch, jwt])
 
     const [shippingAddress, setShippingAddress] = useState({
         id: null,
@@ -87,20 +86,19 @@ export const Cart = () => {
     }
 
     const createOrderUsingSelectedAddress=(item)=>{
-        const newAddress = {
-            id:item.id,
-            fullname: auth.user?.fullname,
-            streetAddress: item.streetAddress,
-            city: item.city,
-            stateProvince: item.stateProvince,
-            postalCode: item.postalCode,
-            country: "India"
-        };
+        // const newAddress = {
+        //     id:item.id,
+        //     fullname: auth.user?.fullname,
+        //     streetAddress: item.streetAddress,
+        //     city: item.city,
+        //     stateProvince: item.stateProvince,
+        //     postalCode: item.postalCode,
+        //     country: "India"
+        // };
         setShippingAddress(item);
     }
 
     const cartTotal=(items)=>{
-
         return items.reduce((accumlatore, item)=>item.totalPrice+accumlatore,0)
     }
 

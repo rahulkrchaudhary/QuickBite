@@ -9,12 +9,11 @@ import {
   Select, 
   MenuItem 
 } from '@mui/material';
-import LoginIcon from '@mui/icons-material/Login';
 import React, { useEffect, useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { MenuCard } from './MenuCard';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurantById, getRestaurantsCategory } from '../State/Restaurant/Action';
 import { getMenuItemsByRestaurantId } from '../State/Menu/Action';
@@ -30,13 +29,13 @@ const foodTypes = [
 
 export const RestaurantDetails = () => {
   const isSmallScreen = useMediaQuery("(max-width: 900px)");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
-  const { auth, restaurant, menu } = useSelector((store) => store);
+  const { restaurant, menu } = useSelector((store) => store);
 
   const [foodType, setFoodType] = useState("all");
-  const { id, city } = useParams();
+  // const { id, city } = useParams();
+  const { id } = useParams();
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // Handle food type change
@@ -52,7 +51,7 @@ export const RestaurantDetails = () => {
   useEffect(() => {
     dispatch(getRestaurantById({ jwt, restaurantId: id }));
     dispatch(getRestaurantsCategory({ jwt, restaurantId: id }));
-  }, []);
+  }, [dispatch, jwt, id]);
 
   useEffect(() => {
     dispatch(
@@ -65,7 +64,7 @@ export const RestaurantDetails = () => {
         foodCategory: selectedCategory,
       })
     );
-  }, [selectedCategory, foodType]);
+  }, [dispatch, jwt, id, selectedCategory, foodType]);
 
   return (
     // auth.user ? (

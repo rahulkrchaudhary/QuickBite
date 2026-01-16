@@ -14,7 +14,7 @@ import { BackendLoader } from './component/config/BackendLoader';
 function App() {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
-  const { auth } = useSelector((store) => store);
+  const { auth, restaurant } = useSelector((store) => store);
   
   const [backendReady, setBackendReady] = useState(false);
   const [checkingBackend, setCheckingBackend] = useState(true);
@@ -42,7 +42,7 @@ function App() {
     };
 
     checkBackend();
-  }, []);
+  }, [dispatch, api.defaults.baseURL]);
 
   // Load user data once backend is ready
   useEffect(() => {
@@ -51,13 +51,13 @@ function App() {
       dispatch(findCart(jwt));
       dispatch(getAllRestaurantAction());
     }
-  }, [backendReady, auth.jwt]);
+  }, [backendReady, auth.jwt , dispatch, jwt, restaurant.usersRestaurant?.id, ]);
 
   useEffect(() => {
     if (backendReady) {
       dispatch(getRestaurantByUserId(auth.jwt || jwt));
     }
-  }, [backendReady, auth.user]);
+  }, [backendReady, auth.jwt, dispatch, jwt]);
 
   // Show loader while checking backend
   if (checkingBackend) {

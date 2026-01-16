@@ -1,13 +1,11 @@
 import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
-import { createIngredient, createIngredientCategory } from '../../component/State/Ingredients/Action';
+import { createIngredient } from '../../component/State/Ingredients/Action';
 
 export const CreateIngredientForm = () => {
     // console.log("onClose", onClose)

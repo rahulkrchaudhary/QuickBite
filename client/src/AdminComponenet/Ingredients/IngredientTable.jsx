@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardHeader, IconButton } from '@mui/material'
+import { Box, Card, CardHeader, IconButton } from '@mui/material'
 import React, { useEffect } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,14 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CreateIcon from '@mui/icons-material/Create';
-import { Delete } from '@mui/icons-material';
-// import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { CreateFoodCategoryForm } from '../FoodCategory/CreateFoodCategoryForm';
 import { CreateIngredientForm } from './CreateIngredientForm';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { getIngredientsOfRestaurant, updateStockOfIngredient } from '../../component/State/Ingredients/Action';
 
 const style = {
@@ -29,7 +25,6 @@ const style = {
     boxShadow: 24,
     p: 4,
   };
-const orders=[1,1,1,1]
 
 export const IngredientTable = () => {
     
@@ -43,7 +38,7 @@ export const IngredientTable = () => {
 
     useEffect(()=>{
         dispatch(getIngredientsOfRestaurant({jwt, id:restaurant.usersRestaurant?.id}))
-    }, [])
+    }, [dispatch, jwt, restaurant.usersRestaurant?.id])
     
     const handleUpdateStock=(id)=>{
         dispatch(updateStockOfIngredient({id, jwt}))
@@ -66,7 +61,7 @@ export const IngredientTable = () => {
                             <TableCell align="center">Id</TableCell>
                             <TableCell align="center">Name</TableCell>
                             <TableCell align="center">Category</TableCell>
-                             <TableCell align="center">Avaibilty</TableCell>
+                             <TableCell align="center">Availability</TableCell>
                          </TableRow>
                     </TableHead>
                     <TableBody>

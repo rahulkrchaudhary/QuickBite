@@ -1,11 +1,10 @@
-import { Password } from '@mui/icons-material'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { resetPassword } from '../State/Authentication/Action'
-import { Alert, Button, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 
 const validationSchema = Yup.object().shape({
