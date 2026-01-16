@@ -1,4 +1,3 @@
-import { act } from 'react'
 import * as actionTypes from './ActionType'
 import { LOGOUT } from '../Authentication/ActionType'
 

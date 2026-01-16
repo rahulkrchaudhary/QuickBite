@@ -21,8 +21,6 @@
 } from "./ActionType";
 
 import { api } from "../../config/api";
-import { daDK } from "@mui/x-date-pickers/locales";
-import { data } from "react-router-dom";
 
 // REGISTER USER
 export const registerUser = (reqData) => async (dispatch) => {
