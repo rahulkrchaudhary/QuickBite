@@ -2,16 +2,28 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import React from "react"
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addItemToCart } from "../State/Cart/Action"
 import { Button, Card } from "@mui/material"
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const MenuCard = ({ item }) => {
   const [quantity, setQuantity] = useState(0)
   const dispatch = useDispatch()
+  const {auth} = useSelector(store=>store)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const handleAddToCart = (e) => {
     e.preventDefault()
+    // Check if user is logged in
+    const jwt = localStorage.getItem("jwt")
+    if (!jwt || !auth.user) {
+      alert("Please login to order")
+      // Redirect to login with current location
+      navigate('/account/login', { state: { from: location.pathname } })
+      return
+    }
     if (quantity === 0) {
       setQuantity(1)
       dispatch(

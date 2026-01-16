@@ -3,7 +3,7 @@ import { api } from './api';
 
 export const checkBackendHealth = async (backendUrl = api.defaults.baseURL) => {
   try {
-    const response = await axios.get(`${backendUrl}api/health`, {
+    const response = await axios.get(`${backendUrl}/api/public/health`, {
       timeout: 5000 // 5 second timeout
     });
     return response.status === 200;

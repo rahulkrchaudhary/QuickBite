@@ -3,7 +3,7 @@ import { Form, Formik, Field, ErrorMessage } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { loginUser } from '../State/Authentication/Action'
 
 const initialValues={
@@ -21,6 +21,7 @@ const validationSchema = Yup.object({
 
 export const LoginForm = () => {
     const navigate=useNavigate()
+    const location = useLocation()
     const dispatch=useDispatch()
     const {error} = useSelector((state)=> state.auth)
 
@@ -30,7 +31,9 @@ export const LoginForm = () => {
             // setSubmitting(false);
             return;
         }
-        dispatch(loginUser({userData:values, navigate}))
+        // Pass the redirect location from state
+        const redirectPath = location.state?.from || '/'
+        dispatch(loginUser({userData:values, navigate, redirectPath}))
     }
   return (
     <div>

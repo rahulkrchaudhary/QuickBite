@@ -27,7 +27,7 @@ export const PaymentSuccess = () => {
                 <h1 className='py-5 text-2xl font-semibold'>Order Success</h1>
                 <p className='py-3 text-center text-gray-400'>Thank You for Trusting Our Platform</p>
                 <p className='py-3 text-center text-gray-400'>Sit Back and Relax, Your Order is on the Way</p>
-                <Button onClick={()=>navigate("/")} variant="contained" className='py-5' sx={{margin:"1rem 0rem"}}>Go To Home</Button>
+                <Button onClick={()=>navigate("/my-profile/orders")} variant="contained" className='py-5' sx={{margin:"1rem 0rem"}}>Go To Orders</Button>
             </Card>
         </div>
     </div>

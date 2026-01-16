@@ -2,6 +2,7 @@ import * as actionTypes from './ActionType'
 
 const initialState={
     menuItems:[],
+    allFoodItems:[],
     loading: false,
     error: null,
     search: [],
@@ -15,6 +16,7 @@ const menuItemReducer=(state=initialState, action)=>{
         case actionTypes.DELETE_MENU_ITEM_REQUEST:
         case actionTypes.SEARCH_MENU_ITEM_REQUEST:
         case actionTypes.UPDATE_MENU_ITEMS_AVAILABILITY_REQUEST:
+        case actionTypes.GET_ALL_MENU_REQUEST:
             return{
                 ...state,
                 loading: true,
@@ -68,11 +70,18 @@ const menuItemReducer=(state=initialState, action)=>{
                 loading: false,
                 search: action.payload
             }
+        case actionTypes.GET_ALL_MENU_SUCCESS:
+            return{
+                ...state,
+                loading: false,
+                allFoodItems: action.payload
+            }
         case actionTypes.CREATE_MENU_ITEM_FAILURE:
         case actionTypes.GET_MENU_ITEMS_BY_RESTAURANT_ID_FAILURE:
         case actionTypes.DELETE_MENU_ITEM_FAILURE:
         case actionTypes.SEARCH_MENU_ITEM_FAILURE:
         case actionTypes.UPDATE_MENU_ITEMS_AVAILABILITY_FAILURE:
+        case actionTypes.GET_ALL_MENU_FAILURE:
             return{
                 ...state,
                 loading: false,

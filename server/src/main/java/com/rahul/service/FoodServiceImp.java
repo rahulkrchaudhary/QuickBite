@@ -115,4 +115,9 @@ public class FoodServiceImp implements FoodService{
         return food;
 
     }
+
+    @Override
+    public List<Food> getAllFood() {
+        return foodRepository.findAll();
+    }
 }

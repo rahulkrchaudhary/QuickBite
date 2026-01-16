@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import { TopMeals } from '../Data/TopMeals'; // Use your existing data import
 import { CarouselItem } from './CarouselItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllMenu, searchMenuItem } from '../State/Menu/Action';
+import { useNavigate } from 'react-router-dom';
 
 const responsive = [
   {
@@ -46,11 +49,19 @@ export const MultiItemCarousel = () => {
     responsive,
   };
 
+  const dispatch = useDispatch();
+  useEffect(() =>{
+    dispatch(getAllMenu())
+  }, [])
+
+  const {menu} = useSelector(store=>store);
+  console.log("menu in carousel--->", menu);
+
   return (
     <div className="w-full">
       <Slider {...settings}>
-        {TopMeals.map((item, index) => (
-          <CarouselItem key={index} image={item.image} title={item.title} />
+        {menu.allFoodItems.map((item, index) => (
+          <CarouselItem key={index} image={item.images} title={item.name} />
         ))}
       </Slider>
     </div>

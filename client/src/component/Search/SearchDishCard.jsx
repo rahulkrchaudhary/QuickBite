@@ -2,7 +2,7 @@ import { Button, Card, CardContent, CardHeader, IconButton } from "@mui/material
 import React from "react";
 import StarIcon from "@mui/icons-material/Star";
 import EastIcon from "@mui/icons-material/East";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { addItemToCart } from "../../../State/Customers/Cart/cart.action";
 import { useNavigate } from "react-router-dom";
 import { addItemToCart } from "../State/Cart/Action";
@@ -10,8 +10,8 @@ import { addItemToCart } from "../State/Cart/Action";
 const SearchDishCard = ({item}) => {
 
     const dispatch = useDispatch();
+    const {auth}=useSelector(store=>store)
     const handleAddItemToCart = () => {
-
     const data = {
       token: localStorage.getItem("jwt"),
       cartItem: {
@@ -51,7 +51,7 @@ const SearchDishCard = ({item}) => {
               src={item.images[0]}
               alt=""
             />
-            <Button onClick={handleAddItemToCart} size="small">Add</Button>
+            {/* {auth.user && <Button onClick={handleAddItemToCart} size="small">Add</Button>} */}
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ public class EventController {
         List<Events> events=eventService.findAllEvent();
         return new ResponseEntity<>(events,HttpStatus.ACCEPTED);
     }
-    @GetMapping("/events/home")
+    @GetMapping("/public/events/home")
     public ResponseEntity<List<Events>> findAllEventsHome() throws Exception{
         List<Events> events=eventService.findAllEvent();
         return new ResponseEntity<>(events,HttpStatus.ACCEPTED);

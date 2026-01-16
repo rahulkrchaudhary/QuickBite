@@ -11,13 +11,17 @@ import { EventCard } from '../Profile/EventCard'
 // import { GET_ALL_EVENTS_REQUEST } from '../State/Restaurant/ActionType'
 
 const bannerImages = [
+    "https://img.myloview.com/posters/fresh-healthy-food-cooking-or-salad-making-ingredients-on-dark-background-with-rustic-wooden-board-diet-or-vegetarian-food-concept-top-view-copy-space-700-193456727.jpg",
   "https://shef.com/homemade-food/wp-content/uploads/tabletop-spread-of-authentic-indian-food.jpg",
   "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80"
-];
+  "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80",
+  "https://www.mrsfields.com/cdn/shop/articles/Brunch_menu_items.jpg?v=1752102549&width=1100",
+  "https://previews.123rf.com/images/somchaichoosiri/somchaichoosiri1911/somchaichoosiri191100055/135034037-pastry-and-bakery-desserts-cakes-and-cookies-close-up-on-the-dark-background.jpg",
+  "https://krdo.b-cdn.net/2023/08/Black-Simple-Modern-Indian-Recipe-Book-Cover.png"
+ ];
 
 
 // const restaurants=[1,1,1,1,1,1,1,1]
@@ -90,10 +94,10 @@ export const Home = () => {
 
         </section>
 
-        {/* <section className='p-10 lg:py-10 lg:px-20 '>
+        <section className='p-10 lg:py-10 lg:px-20 '>
             <p className='text-2xl font-semibold text-grey-400 py-5 text-center'>Top Meals</p>
             <MultiItemCarousel/>
-        </section> */}
+        </section>
         { restaurant.restaurants.length >0 && (
         <section className='px-5 lg:px-20 pt-5'>
             <h1 className='text-2xl font-semibold text-grey-400 pb-5 text-center mb-5'>Best Restaurant</h1>

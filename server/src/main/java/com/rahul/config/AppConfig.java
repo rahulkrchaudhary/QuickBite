@@ -32,9 +32,9 @@ public class AppConfig {
                 .authorizeHttpRequests(Authorize-> Authorize
                         .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
                         .requestMatchers("/api/stripe/webhook").permitAll()
-                        .requestMatchers("/api/restaurants").permitAll()
-                        .requestMatchers("/api/health").permitAll()
-                        .requestMatchers("/api/events/home").permitAll()
+//                        .requestMatchers("/api/restaurants").permitAll()
+                        .requestMatchers("/api/public/**").permitAll()
+//                        .requestMatchers("/api/events/home").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )
@@ -51,7 +51,7 @@ public class AppConfig {
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg= new CorsConfiguration();
                 cfg.setAllowedOrigins(Arrays.asList(
-                        "http://localhost:3000/",
+                        "http://localhost:3000",
                         frontedUrl
                 ));
 

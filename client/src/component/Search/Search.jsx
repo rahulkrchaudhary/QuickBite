@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { PopularCuisines } from "./PopularCuisines";
 import SearchDishCard from "./SearchDishCard";
 import { useDispatch, useSelector } from "react-redux";
 import { TopMeals } from "../Data/TopMeals";
-import { searchMenuItem } from "../State/Menu/Action";
+import { getAllMenu, searchMenuItem } from "../State/Menu/Action";
 import { searchRestaurant } from "../State/Restaurant/Action";
 import { Button } from "@mui/material";
 import { SearchRestaurantCard } from "./SearchRestaurantCard";
@@ -13,7 +13,7 @@ import { RestaurantCard } from "../Restaurant/RestaurantCard";
 const Search = () => {
 
   const dispatch = useDispatch();
-  const { menu,auth, restaurant } = useSelector((store) => store);
+  const { menu, auth, restaurant } = useSelector((store) => store);
   const jwt=localStorage.getItem("jwt")
 
   const [selected, setSelected] = useState("food");
@@ -28,8 +28,12 @@ const Search = () => {
         dispatch(searchRestaurant({keyword, jwt: jwt}))
     }
   };
-  
-  
+    useEffect(() =>{
+        console.log("use effect called")
+        dispatch(getAllMenu())
+        console.log(menu)
+    }, [])
+
   return (
     <div className="px-5 lg:px-[18vw]">
         <div className="flex flex-wrap items-center justify-center mt-5 gap-2 md:gap-4 w-full">
@@ -60,14 +64,14 @@ const Search = () => {
           placeholder="search food..."
         />
       </div>
-      <div>
+      {/* <div>
         <h1 className="py-5 text-2xl font-semibold">Popular Cuisines</h1>
         <div className="flex flex-wrap ">
-          {TopMeals.slice(0, 9).map((item) => (
-            <PopularCuisines image={item.image} title={item.title} />
+          {menu.allFoodItems.slice(0, 10).map((item) => (
+            <PopularCuisines image={item.images} title={item.name} />
           ))}
         </div>
-      </div>
+      </div> */}
       <div className=" mt-7">
             {selected === "food" ? (
                 menu.search.map((item) => (

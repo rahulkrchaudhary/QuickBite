@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/food")
+@RequestMapping("/api")
 public class FoodController {
 
     @Autowired
@@ -25,24 +25,46 @@ public class FoodController {
     @Autowired
     private RestaurantService restaurantService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Food>> searchFood(@RequestParam String name,
-                                                @RequestHeader("Authorization") String jwt) throws Exception {
-        User user=userService.findUserByJwtToken(jwt);
+//    @GetMapping("/food/search")
+//    public ResponseEntity<List<Food>> searchFood(@RequestParam String name,
+//                                                @RequestHeader("Authorization") String jwt) throws Exception {
+//        User user=userService.findUserByJwtToken(jwt);
+//        List<Food> food=foodService.searchFood(name);
+//        return new ResponseEntity<>(food, HttpStatus.CREATED);
+//    }
+
+    @GetMapping("/public/food/search")
+    public ResponseEntity<List<Food>> searchFood(@RequestParam String name) throws Exception {
         List<Food> food=foodService.searchFood(name);
         return new ResponseEntity<>(food, HttpStatus.CREATED);
     }
 
-    @GetMapping("/restaurant/{restaurantId}")
+//    @GetMapping("/food/restaurant/{restaurantId}")
+//    public ResponseEntity<List<Food>> getRestaurantFood(@RequestParam (required = false) boolean vegetarian,
+//                                                 @RequestParam (required = false) boolean seasonal,
+//                                                 @RequestParam (required = false) boolean nonveg,
+//                                                 @RequestParam (required = false) String food_category,
+//                                                 @PathVariable Long restaurantId,
+//                                                 @RequestHeader("Authorization") String jwt) throws Exception {
+//        User user=userService.findUserByJwtToken(jwt);
+//        List<Food> food=foodService.getRestaurantFood(restaurantId, vegetarian, nonveg, seasonal, food_category);
+//        return new ResponseEntity<>(food, HttpStatus.OK);
+//    }
+
+    @GetMapping("/public/food/restaurant/{restaurantId}")
     public ResponseEntity<List<Food>> getRestaurantFood(@RequestParam (required = false) boolean vegetarian,
-                                                 @RequestParam (required = false) boolean seasonal,
-                                                 @RequestParam (required = false) boolean nonveg,
-                                                 @RequestParam (required = false) String food_category,
-                                                 @PathVariable Long restaurantId,
-                                                 @RequestHeader("Authorization") String jwt) throws Exception {
-        User user=userService.findUserByJwtToken(jwt);
+                                                        @RequestParam (required = false) boolean seasonal,
+                                                        @RequestParam (required = false) boolean nonveg,
+                                                        @RequestParam (required = false) String food_category,
+                                                        @PathVariable Long restaurantId) throws Exception {
         List<Food> food=foodService.getRestaurantFood(restaurantId, vegetarian, nonveg, seasonal, food_category);
         return new ResponseEntity<>(food, HttpStatus.OK);
+    }
+
+    @GetMapping("/public/foods")
+    public ResponseEntity<List<Food>> getALlFood(){
+        List<Food> foods=foodService.getAllFood();
+        return new ResponseEntity<>(foods, HttpStatus.OK);
     }
 
 

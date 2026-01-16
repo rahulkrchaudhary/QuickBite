@@ -42,7 +42,7 @@ export const SearchRestaurantCard = ({item}) => {
                     <p onClick={handleNavigateToRestaurant} className='font-semibold text-lg cursor-pointer'>
                         {item.name}
                     </p>
-                    <p className='text-gray-500 text-5m'>
+                    <p className='text-gray-500 text-sm'>
                     {item.description}
                     </p>
         
@@ -50,7 +50,7 @@ export const SearchRestaurantCard = ({item}) => {
                 <div>
                     <IconButton onClick={handleAddToFavorite}>
                     {isPresentInFavorites(auth.favorites, item) ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
-                    </IconButton>
+                    </IconButton>   
                 </div>
         
                 </div>

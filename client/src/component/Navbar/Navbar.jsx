@@ -44,9 +44,9 @@ export const Navbar = () => {
 
         <div className='flex items-center space-x-2 lg:space-x-10'>
             <div className=''>
-                {auth.user && <IconButton onClick={()=> navigate("/search")}>
+                <IconButton onClick={()=> navigate("/search")}>
                     <SearchIcon sx={{fontSize:"1.5rem"}}/>
-                </IconButton>}
+                </IconButton>
             </div>
             <div className=''>
                 {auth.user? (
