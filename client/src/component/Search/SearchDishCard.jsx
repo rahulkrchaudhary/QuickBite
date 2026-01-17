@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, IconButton } from "@mui/material";
 import React from "react";
 import EastIcon from "@mui/icons-material/East";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const SearchDishCard = ({item}) => {

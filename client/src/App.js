@@ -42,7 +42,7 @@ function App() {
     };
 
     checkBackend();
-  }, [dispatch, api.defaults.baseURL]);
+  }, [dispatch]);
 
   // Load user data once backend is ready
   useEffect(() => {
